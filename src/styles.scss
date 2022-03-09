@@ -84,7 +84,7 @@ $dark-theme: mat.define-dark-theme(
 }
 
 :root[data-theme='dark'] {
-  @include mat.all-component-themes($dark-theme);
+  @include mat.all-component-colors($dark-theme);
 
   --app-primary-color: #{mat.get-color-from-palette($dark-primary)};
   --app-accent-color: #{mat.get-color-from-palette($dark-accent)};
