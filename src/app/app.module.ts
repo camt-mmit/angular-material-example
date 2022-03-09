@@ -55,7 +55,7 @@ export class AppModule {
       'icons',
       'github',
       this.domSanitizer.bypassSecurityTrustResourceUrl(
-        '/assets/icons/GitHub-Mark.svg',
+        'assets/icons/GitHub-Mark.svg',
       ),
     );
   }
