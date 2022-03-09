@@ -1,0 +1,25 @@
+<app-main-content>
+  <ng-container appTitle>
+    <h2>Events</h2>
+    <button
+      type="button"
+      mat-icon-button
+      matTooltip="Reload"
+      class="cmp-reload"
+      (click)="onReload()"
+    >
+      <mat-icon>refresh</mat-icon>
+    </button>
+  </ng-container>
+
+  <div class="cmp-actions-panel">
+    <a mat-button color="primary" routerLink="create">
+      <mat-icon>event</mat-icon>
+      Create
+    </a>
+  </div>
+  <app-google-events-list
+    [data]="data$ | async"
+    class="cmp-main-content"
+  ></app-google-events-list>
+</app-main-content>

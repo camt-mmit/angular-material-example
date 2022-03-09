@@ -1,0 +1,25 @@
+<mat-list>
+  <h3 matSubheader>Fullname</h3>
+  <mat-list-item>
+    <mat-icon matListIcon>person</mat-icon>
+    <p matLine>{{ value?.firstname }} {{ value?.lastname }}</p>
+  </mat-list-item>
+
+  <h3 matSubheader>Gender</h3>
+  <mat-list-item>
+    <mat-icon matListIcon>{{
+      value?.gender === 'Male'
+        ? 'male'
+        : value?.gender === 'Female'
+        ? 'female'
+        : 'transgender'
+    }}</mat-icon>
+    <p matLine>{{ value?.gender }}</p>
+  </mat-list-item>
+
+  <h3 matSubheader>Birthdate</h3>
+  <mat-list-item>
+    <mat-icon matListIcon>cake</mat-icon>
+    <p matLine>{{ value?.birthdate | date }}</p>
+  </mat-list-item>
+</mat-list>

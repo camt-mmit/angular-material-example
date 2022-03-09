@@ -1,0 +1,22 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+
+  row-gap: var(--app-row-gap);
+}
+
+.cmp-actions-panel {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+  column-gap: 16px;
+}

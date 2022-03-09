@@ -1,0 +1,22 @@
+<app-main-content>
+  <ng-container appTitle>
+    <h2>Token Management</h2>
+  </ng-container>
+
+  <div class="cmp-main-content">
+    <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      (click)="forceExpires()"
+    >
+      <mat-icon>auto_delete</mat-icon>
+      Force Token Expires
+    </button>
+
+    <button mat-flat-button color="warn" type="button" (click)="deleteToken()">
+      <mat-icon>delete_forever</mat-icon>
+      Delete Token
+    </button>
+  </div>
+</app-main-content>

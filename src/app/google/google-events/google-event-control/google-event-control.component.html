@@ -1,0 +1,54 @@
+<ng-container [formGroup]="formGroup">
+  <mat-form-field appearance="outline">
+    <mat-label>Summary</mat-label>
+    <mat-icon matPrefix>title</mat-icon>
+    <input
+      type="text"
+      matInput
+      formControlName="summary"
+      (blur)="onTouched()"
+    />
+    <mat-hint>For display</mat-hint>
+    <mat-error>Required</mat-error>
+  </mat-form-field>
+
+  <mat-divider></mat-divider>
+
+  <div
+    class="cmp-time-range cmp-fields-row"
+    formGroupName="timeRange"
+    [ngClass]="{
+      'cl-invalid': getErrors('timeRange')?.['invalidTimeRange']
+    }"
+  >
+    <ng-container formGroupName="start">
+      <mat-form-field appearance="outline">
+        <mat-label>Start</mat-label>
+        <mat-icon matPrefix>start</mat-icon>
+        <input
+          type="datetime-local"
+          matInput
+          formControlName="dateTime"
+          (blur)="onTouched()"
+        />
+        <mat-hint>Start of event</mat-hint>
+        <mat-error>Required</mat-error>
+      </mat-form-field>
+    </ng-container>
+
+    <ng-container formGroupName="end">
+      <mat-form-field appearance="outline">
+        <mat-label>End</mat-label>
+        <mat-icon matPrefix>flag</mat-icon>
+        <input
+          type="datetime-local"
+          matInput
+          formControlName="dateTime"
+          (blur)="onTouched()"
+        />
+        <mat-hint>End of event</mat-hint>
+        <mat-error>Required</mat-error>
+      </mat-form-field>
+    </ng-container>
+  </div>
+</ng-container>

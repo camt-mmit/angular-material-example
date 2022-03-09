@@ -1,0 +1,30 @@
+.cmp-login-panel {
+  display: block;
+
+  padding-top: 100px;
+  text-align: center;
+}
+
+.cmp-signin-button {
+  display: inline-block;
+
+  & > .cl-light {
+    display: block;
+  }
+
+  & > .cl-dark {
+    display: none;
+  }
+}
+
+:host-context([data-theme='dark']) {
+  .cmp-signin-button {
+    & > .cl-light {
+      display: none;
+    }
+
+    & > .cl-dark {
+      display: block;
+    }
+  }
+}

@@ -1,0 +1,11 @@
+<app-main-content>
+  <ng-container appTitle>
+    <h2>Create Event</h2>
+  </ng-container>
+
+  <app-google-event-form
+    class="cmp-main-content"
+    (valueChange)="onValueChange($event)"
+    (cancel)="onCancel($event)"
+  ></app-google-event-form>
+</app-main-content>

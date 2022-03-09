@@ -1,0 +1,19 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  row-gap: var(--app-row-gap);
+}
+
+.cmp-array-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  row-gap: var(--app-row-gap);
+}
+
+.cmp-no {
+  display: inline-block;
+  width: 3ch;
+}

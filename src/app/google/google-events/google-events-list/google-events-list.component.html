@@ -1,0 +1,16 @@
+<mat-nav-list *ngIf="data; else loading">
+  <a
+    *ngFor="let item of data.items; let last = last"
+    mat-list-item
+    [href]="item.htmlLink"
+    target="_blank"
+  >
+    <h4 matLine>{{ item.summary }}</h4>
+    <small matLine>{{ displayEventTimeRange(item) }}</small>
+    <mat-divider *ngIf="!last" inset></mat-divider>
+  </a>
+</mat-nav-list>
+
+<ng-template #loading>
+  <app-google-loading></app-google-loading>
+</ng-template>

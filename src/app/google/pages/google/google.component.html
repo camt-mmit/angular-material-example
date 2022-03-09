@@ -1,0 +1,22 @@
+<mat-nav-list *appSidenavPortal>
+  <a mat-list-item routerLink="events">Events</a>
+  <a mat-list-item routerLink="people">People</a>
+  <a mat-list-item routerLink="token">Token</a>
+</mat-nav-list>
+
+<ng-container [ngSwitch]="tokenReady$ | async">
+  <div *ngSwitchCase="false" class="cmp-login-panel">
+    <a [href]="authorizationLink$ | async" class="cmp-signin-button">
+      <img
+        src="/assets/btn_google_signin_light_normal_web.png"
+        class="cl-light"
+      />
+      <img
+        src="/assets/btn_google_signin_dark_normal_web.png"
+        class="cl-dark"
+      />
+    </a>
+  </div>
+
+  <router-outlet *ngSwitchCase="true"></router-outlet>
+</ng-container>

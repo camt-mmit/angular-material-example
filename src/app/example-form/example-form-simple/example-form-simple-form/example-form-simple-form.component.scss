@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+}
+
+.cmp-consent-panel {
+  display: flex;
+  flex-direction: row;
+
+  justify-content: center;
+}

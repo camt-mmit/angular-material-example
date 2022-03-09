@@ -1,0 +1,49 @@
+<mat-list *ngIf="data; else loading">
+  <mat-list-item *ngFor="let item of data.connections; let last = last">
+    <img
+      matListAvatar
+      [src]="urlPhotos(item.photos)"
+      [alt]="displayName(item.names) + '\'s image'"
+    />
+
+    <h4 matLine>{{ displayName(item.names) }}</h4>
+    <p *ngIf="displayPhoneNumber(item.phoneNumbers) as phone" matLine>
+      <b class="cmp-label">Phone</b>
+      <span class="cmp-value">{{ phone }}</span>
+    </p>
+    <p *ngIf="displayEmailAddress(item.emailAddresses) as email" matLine>
+      <b class="cmp-label">Email</b>
+      <span class="cmp-value">{{ email }}</span>
+    </p>
+
+    <button
+      mat-icon-button
+      [matMenuTriggerFor]="personActions"
+      [matMenuTriggerData]="{
+        phone: displayPhoneNumber(item.phoneNumbers),
+        email: displayEmailAddress(item.emailAddresses)
+      }"
+      aria-label="More actions icon-button with a menu"
+    >
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-divider *ngIf="!last" inset></mat-divider>
+  </mat-list-item>
+</mat-list>
+
+<mat-menu #personActions="matMenu">
+  <ng-template matMenuContent let-phone="phone" let-email="email">
+    <a *ngIf="phone" mat-menu-item [href]="'tel:' + phone">
+      <mat-icon>call</mat-icon>
+      Call
+    </a>
+    <a *ngIf="email" mat-menu-item [href]="'mailto:' + email">
+      <mat-icon>email</mat-icon>
+      Send mail
+    </a>
+  </ng-template>
+</mat-menu>
+
+<ng-template #loading>
+  <app-google-loading></app-google-loading>
+</ng-template>

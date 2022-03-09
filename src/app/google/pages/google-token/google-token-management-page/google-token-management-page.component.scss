@@ -1,0 +1,9 @@
+.cmp-main-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 64px;
+
+  row-gap: var(--app-row-gap);
+}

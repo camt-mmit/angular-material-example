@@ -1,0 +1,11 @@
+<app-simple-form
+  [formGroup]="formGroup"
+  [errorFn]="errorFn"
+  (valueChange)="onValueChange($event)"
+  (cancel)="onCancel($event)"
+>
+  <app-google-event-control
+    formControlName="eventResource"
+    class="cmp-form-list"
+  ></app-google-event-control>
+</app-simple-form>

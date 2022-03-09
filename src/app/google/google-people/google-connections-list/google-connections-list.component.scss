@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  box-sizing: border-box;
+}
+
+mat-list-item {
+  height: auto !important;
+
+  img[matlistavatar] {
+    height: 100px !important;
+    width: 100px !important;
+    border-radius: 0 !important;
+  }
+
+  .cmp-label {
+    display: inline-block;
+    width: 10ch;
+  }
+
+  .cmp-value {
+    color: var(--app-primary-color);
+  }
+}

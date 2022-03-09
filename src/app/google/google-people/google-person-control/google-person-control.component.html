@@ -1,0 +1,158 @@
+<ng-container [formGroup]="formGroup">
+  <div formGroupName="names" class="cmp-fields-row">
+    <ng-container formGroupName="0">
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <mat-icon matPrefix>person</mat-icon>
+        <input
+          matInput
+          type="text"
+          formControlName="givenName"
+          (blur)="onTouched()"
+        />
+        <mat-hint>Given name</mat-hint>
+        <mat-error> Name is <strong>required</strong> </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Family Name</mat-label>
+        <mat-icon matPrefix>people</mat-icon>
+        <input
+          matInput
+          type="text"
+          formControlName="familyName"
+          (blur)="onTouched()"
+        />
+        <mat-hint>Famaily name</mat-hint>
+      </mat-form-field>
+    </ng-container>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div formArrayName="phoneNumbers" class="cmp-array-list">
+    <div class="cmp-actions-panel">
+      <button
+        mat-button
+        color="primary"
+        type="button"
+        (click)="addPhoneNumber()"
+      >
+        <mat-icon>phone</mat-icon>
+        Add
+      </button>
+    </div>
+
+    <mat-form-field
+      appearance="outline"
+      *ngFor="let control of phoneNumbers.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <mat-label
+        >Phone <span class="cmp-no cl-number">{{ i + 1 }}</span></mat-label
+      >
+      <input
+        matInput
+        pattern="0[1-9]{2}[0-9]{7,}"
+        type="tel"
+        formControlName="value"
+        placeholder="Ex. 0891234567"
+        (blur)="onTouched()"
+      />
+      <mat-hint>
+        <ng-container [ngSwitch]="i">
+          <ng-container *ngSwitchCase="0"
+            ><b>Primary</b> phone number</ng-container
+          >
+          <ng-container *ngSwitchDefault
+            ><b>Alternative</b> phone number</ng-container
+          >
+        </ng-container>
+      </mat-hint>
+      <mat-error *ngIf="getErrors('phoneNumbers.' + i + '.value') as errors">
+        <ng-container [ngSwitch]="true">
+          <ng-container *ngSwitchCase="errors['required']"
+            >Phone number is <strong>required</strong></ng-container
+          >
+          <ng-container *ngSwitchCase="!!errors['pattern']"
+            ><strong>Invalid</strong> phone number</ng-container
+          >
+          <ng-container *ngSwitchDefault>{{ errors | json }}</ng-container>
+        </ng-container>
+      </mat-error>
+      <button
+        matSuffix
+        mat-icon-button
+        color="warn"
+        type="button"
+        (click)="removePhoneNumber(i)"
+      >
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div formArrayName="emailAddresses" class="cmp-array-list">
+    <div class="cmp-actions-panel">
+      <button
+        mat-button
+        color="primary"
+        type="button"
+        (click)="addEmailAddress()"
+      >
+        <mat-icon>email</mat-icon>
+        Add
+      </button>
+    </div>
+
+    <mat-form-field
+      appearance="outline"
+      *ngFor="let control of emailAddresses.controls; let i = index"
+      [formGroupName]="i"
+    >
+      <mat-label
+        >Email <span class="cmp-no cl-number">{{ i + 1 }}</span></mat-label
+      >
+      <input
+        matInput
+        email
+        type="email"
+        formControlName="value"
+        placeholder="Ex. abc@example.net"
+        (blur)="onTouched()"
+      />
+      <mat-hint>
+        <ng-container [ngSwitch]="i">
+          <ng-container *ngSwitchCase="0"
+            ><b>Primary</b> email address</ng-container
+          >
+          <ng-container *ngSwitchDefault
+            ><b>Alternative</b> email address</ng-container
+          >
+        </ng-container>
+      </mat-hint>
+      <mat-error *ngIf="getErrors('emailAddresses.' + i + '.value') as errors">
+        <ng-container [ngSwitch]="true">
+          <ng-container *ngSwitchCase="errors['required']"
+            >Email address is <strong>required</strong></ng-container
+          >
+          <ng-container *ngSwitchCase="errors['email']"
+            ><strong>Invalid</strong> email address</ng-container
+          >
+          <ng-container *ngSwitchDefault>{{ errors | json }}</ng-container>
+        </ng-container>
+      </mat-error>
+      <button
+        matSuffix
+        mat-icon-button
+        color="warn"
+        type="button"
+        (click)="removeEmailAddress(i)"
+      >
+        <mat-icon>delete_forever</mat-icon>
+      </button>
+    </mat-form-field>
+  </div>
+</ng-container>

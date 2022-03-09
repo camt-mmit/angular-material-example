@@ -1,0 +1,33 @@
+<form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+  <ng-content></ng-content>
+
+  <div class="cmp-actions-panel">
+    <button
+      appSimpleFormAction="process"
+      name="save"
+      mat-flat-button
+      color="primary"
+      #defaultAction="simpleFormAction"
+    >
+      <app-icon-spinner [processing]="defaultAction.processing">
+        <mat-icon>save</mat-icon>
+      </app-icon-spinner>
+      Save
+    </button>
+
+    <button
+      *ngIf="!hideCancel"
+      appSimpleFormAction="cancel"
+      name="cancel"
+      mat-flat-button
+      color="warn"
+      #cancelAction="simpleFormAction"
+      (click)="onCancel()"
+    >
+      <app-icon-spinner [processing]="cancelAction.processing">
+        <mat-icon>cancel</mat-icon>
+      </app-icon-spinner>
+      Cancel
+    </button>
+  </div>
+</form>

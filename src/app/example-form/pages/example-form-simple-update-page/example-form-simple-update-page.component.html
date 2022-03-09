@@ -1,0 +1,12 @@
+<app-main-content>
+  <ng-container appTitle>
+    <h2>Update Simple Form Data</h2>
+  </ng-container>
+
+  <app-example-form-simple-form
+    class="cmp-main-content"
+    [value]="value$ | async"
+    hideCancel
+    (valueChange)="onValueChange($event)"
+  ></app-example-form-simple-form>
+</app-main-content>

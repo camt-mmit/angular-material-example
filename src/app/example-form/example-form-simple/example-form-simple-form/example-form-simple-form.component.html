@@ -1,0 +1,23 @@
+<app-simple-form
+  [formGroup]="formGroup"
+  [errorFn]="errorFn"
+  (valueChange)="onValueChange($event)"
+  (cancel)="onCancel($event)"
+  appSimpleFormOptions
+  hideCancel
+>
+  <app-example-form-simple-control
+    formControlName="value"
+  ></app-example-form-simple-control>
+
+  <div class="cmp-consent-panel">
+    <div class="cmp-form-field mat-form-field">
+      <mat-checkbox formControlName="consent" required
+        >I want to update data.</mat-checkbox
+      >
+      <div class="mat-form-field-subscript-wrapper">
+        <mat-error>Consent mark is <strong>required</strong></mat-error>
+      </div>
+    </div>
+  </div>
+</app-simple-form>

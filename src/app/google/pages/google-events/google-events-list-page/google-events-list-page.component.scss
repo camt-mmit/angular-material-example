@@ -1,0 +1,13 @@
+.cmp-reload {
+  margin-left: auto;
+}
+
+.cmp-actions-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  & > .cl-filler {
+    flex: 1 0 auto;
+  }
+}

@@ -1,0 +1,9 @@
+<mat-spinner
+  color="accent"
+  diameter="24"
+  *ngIf="processing; else icon"
+></mat-spinner>
+
+<ng-template #icon>
+  <ng-content></ng-content>
+</ng-template>

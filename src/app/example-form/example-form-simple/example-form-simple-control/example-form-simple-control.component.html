@@ -1,0 +1,62 @@
+<ng-container [formGroup]="formGroup">
+  <div class="cmp-fields-row">
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <mat-icon matPrefix>person</mat-icon>
+      <input
+        type="text"
+        matInput
+        formControlName="firstname"
+        (blur)="onTouched()"
+      />
+      <mat-hint>Given Name</mat-hint>
+      <mat-error>Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <mat-icon matPrefix>people</mat-icon>
+      <input
+        type="text"
+        matInput
+        formControlName="lastname"
+        (blur)="onTouched()"
+      />
+      <mat-hint>Family Name</mat-hint>
+      <mat-error>Required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="cmp-fields-row">
+    <mat-form-field appearance="outline">
+      <mat-label>Gender</mat-label>
+      <mat-icon matPrefix>transgender</mat-icon>
+      <mat-select formControlName="gender" (blur)="onTouched()">
+        <mat-option [value]="null">-- Please Select --</mat-option>
+        <mat-option [value]="'Male'">Male</mat-option>
+        <mat-option [value]="'Female'">Female</mat-option>
+      </mat-select>
+      <mat-hint>Only Male or Female</mat-hint>
+      <mat-error>Required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Birthdate</mat-label>
+      <mat-icon matPrefix>cake</mat-icon>
+      <input
+        type="text"
+        matInput
+        formControlName="birthdate"
+        [matDatepicker]="picker"
+        (blur)="onTouched()"
+      />
+      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker
+        #picker
+        [startAt]="formGroup.get('birthdate')?.value || startAt"
+      ></mat-datepicker>
+      <mat-error>Required</mat-error>
+      <mat-hint>Input in date format</mat-hint>
+    </mat-form-field>
+  </div>
+</ng-container>
